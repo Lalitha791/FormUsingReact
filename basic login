@@ -1,0 +1,74 @@
+import { useState } from "react";
+
+function Profile() {
+    const [name, setname] = useState("");
+    const [phone, setphone] = useState("");
+    const [email, setemail] = useState("");
+    const [message, setmessage] = useState("");
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        if (name === "" || phone === "" || email === "") {
+            setmessage("Please enter Name, Phone and Email");
+            return;
+        }
+
+        setmessage("Details submitted successfully");
+    }
+
+    return (
+        <div>
+            <p>hello world</p>
+
+            <form onSubmit={handleSubmit}>
+                <label>Name</label>
+
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setname(e.target.value)}
+                />
+
+                <br />
+                <br />
+
+                <label>Phone</label>
+
+                <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setphone(e.target.value)}
+                />
+
+                <br />
+                <br />
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setemail(e.target.value)}
+                />
+
+                <br />
+                <br />
+
+                <button type="submit">Submit</button>
+
+                <p
+                    style={{
+                        color: message === "Details submitted successfully"
+                            ? "green"
+                            : "red",
+                    }}
+                >
+                    {message}
+                </p>
+            </form>
+        </div>
+    );
+}
+
+export default Profile;
